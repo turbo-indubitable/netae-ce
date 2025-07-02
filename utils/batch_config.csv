@@ -1,0 +1,4 @@
+run_name,input_file,batch_size,num_epochs,floor,patience,speed_mode,hw_auto,seed
+run-default,/home/phaze/PycharmProjects/NetworkModel/Code/data/testdata.csv,100000,250,0.005,15,false,false,42
+run-default,/home/phaze/PycharmProjects/NetworkModel/Code/data/CTU22Partial__2025-03-25.csv,100000,250,0.005,15,false,false,42
+run-default,/home/phaze/PycharmProjects/NetworkModel/Code/data/CTU7Normal.csv,100000,250,0.005,15,false,false,42

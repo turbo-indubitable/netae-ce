@@ -1,0 +1,42 @@
+General:
+  level: WARNING
+  file: /home/phaze/PycharmProjects/NetworkModel/Code/app.log
+  max_bytes: 10485760
+  backup_count: 3
+  console: true
+  console_level: DATABASE
+
+config_source:
+  prefer: yaml        # options: yaml, db — sets priority order
+  fallback: db        # if the preferred source is missing/incomplete
+
+run_parameters:
+  seed: 42            # or null to disable deterministic seed setting
+  speed_mode: false    # true = run only on 100 rows
+
+training:
+    num_epochs: 250          # Null = let autodetect set this
+    batch_size: 100000          # Null = let autodetect set this
+    min_batches_per_bin: 7     # Don't go below this
+    max_batches_per_bin: 50    # Don't go above this
+    use_hw_autodetect: false   # true = fallback to memory-based batch sizing
+    lr_decay_factor: 0.5
+    lr_decay_patience: 3
+    safety_margin_pct: 10
+
+early_stopping:
+  patience: 15         # epochs without improvement before stopping
+  min_delta: 0.01         # min change in loss to count as progress
+  floor: 1.0               # Absolute loss cutoff: stop if loss < this value
+
+routed_traffic_patterns:
+  - pattern_id: "https_traffic"
+    filter_expr: "protocol == 6 and (src_port == 443 or dst_port == 443)"
+  - pattern_id: "dns_queries"
+    filter_expr: "protocol == 17 and (src_port ==53 or dst_port == 53)"
+  - pattern_id: "http_traffic"
+    filter_expr: "protocol == 6 and (src_port == 80 or dst_port == 80)"
+  - pattern_id: "Google Quic"
+    filter_expr: "protocol == 17 and (src_port == 443 or dst_port == 443)"
+  - pattern_id: "unmatched"
+    filter_expr: "protocol == protocol"

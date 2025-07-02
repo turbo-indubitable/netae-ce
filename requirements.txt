@@ -1,0 +1,23 @@
+# requirements.txt
+
+# Core ML + Torch
+torch>=2.0.0
+numpy>=1.23
+scikit-learn>=1.2
+
+# Data processing
+pandas>=1.5
+tqdm>=4.64
+ipaddress
+
+# YAML config
+pyyaml>=6.0
+
+# Logging and DB
+psycopg2>=2.9
+
+# Optional CLI enhancements
+argparse
+
+# Future test support
+pytest
